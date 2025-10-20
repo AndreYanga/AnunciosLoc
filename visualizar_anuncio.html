@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AnuncioLoc - Visualizar Anúncio</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#13a4ec",
+              "background-light": "#f6f7f8",
+              "background-dark": "#101c22",
+            },
+            fontFamily: {
+              display: ["Space Grotesk", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="flex h-screen w-full flex-col justify-between">
+<div class="flex-grow overflow-y-auto">
+<header class="sticky top-0 z-10 flex items-center justify-between border-b border-background-light/80 bg-background-light/80 p-4 pb-3 backdrop-blur-sm dark:border-background-dark/80 dark:bg-background-dark/80">
+<button class="flex h-10 w-10 items-center justify-center rounded-full text-zinc-900 dark:text-white" onclick="history.back()">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="flex-1 text-center text-lg font-bold text-zinc-900 dark:text-white">Anúncio</h1>
+<div class="w-10"></div>
+</header>
+<main class="p-4">
+<div class="mb-4 flex items-center gap-3">
+<img alt="Avatar do utilizador" class="h-12 w-12 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGenviygkS9Bz5GeBAerStmWuqyy0Jgf8-q2SqdcJLrFZYt8_vN0OKQ9ZYLehLEeR7GCnW_t22CalGmg2h-Uq-MiP2UeggHwtL8QW6VBs4V_CUss9NAAOomt_qPAG-4DuOSrvU76v1e_KCC9T2m3Y1DU2WKnNc-_o2Y3kaGg-z46bvpC1ZAIH6BpOvPX8zmM9CjSPz7JiRkDzGxFHc97VJod4fpzIsb5LZRArEVMbDf1ROkQPCRizSooVe3In6Di1ihpM9uUF56S3n"/>
+<div>
+<p class="font-bold text-zinc-900 dark:text-white">Alice Silva</p>
+<p class="text-sm text-zinc-500 dark:text-zinc-400">há 2 horas</p>
+</div>
+</div>
+<p class="mb-4 text-zinc-800 dark:text-zinc-200">
+            Olá pessoal, estou a organizar um evento de limpeza comunitária no Largo da Independência este sábado às 10h. Vamos focar na área perto do lago. Os materiais serão fornecidos, mas podem trazer as suas próprias luvas se tiverem. Vamos tornar o nosso parque mais bonito juntos!
+          </p>
+<div class="mb-6 flex items-center gap-2 text-sm text-zinc-500 dark:text-zinc-400">
+<span class="material-symbols-outlined text-base">location_on</span>
+<span>Largo da Independência</span>
+</div>
+<div class="flex items-center justify-around border-y border-zinc-200/50 py-1 dark:border-zinc-800/50">
+<button class="flex items-center gap-2 rounded-lg px-3 py-2 text-zinc-600 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-800/50">
+<span class="material-symbols-outlined text-xl">favorite_border</span>
+<span class="text-sm font-medium">23</span>
+</button>
+<button class="flex items-center gap-2 rounded-lg px-3 py-2 text-zinc-600 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-800/50">
+<span class="material-symbols-outlined text-xl">chat_bubble_outline</span>
+<span class="text-sm font-medium">5</span>
+</button>
+<button class="flex items-center gap-2 rounded-lg px-3 py-2 text-zinc-600 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-800/50">
+<span class="material-symbols-outlined text-xl">bookmark_border</span>
+<span class="text-sm font-medium">1</span>
+</button>
+</div>
+<div class="mt-6">
+<button class="h-12 w-full rounded-lg bg-primary text-base font-bold text-white transition-colors hover:bg-primary/90">Guardar Anúncio</button>
+</div>
+</main>
+</div>
+<nav class="border-t border-zinc-200/50 bg-background-light px-4 pb-4 pt-2 dark:border-zinc-800/50 dark:bg-background-dark">
+<div class="flex justify-around">
+<a class="flex flex-1 flex-col items-center justify-center gap-1 py-1 text-zinc-500 dark:text-zinc-400" href="index.html">
+<span class="material-symbols-outlined">home</span>
+<span class="text-xs font-medium">Início</span>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 rounded-full bg-primary/10 py-1 text-primary dark:bg-primary/20" href="anuncios.html">
+<span class="material-symbols-outlined">campaign</span>
+<span class="text-xs font-medium">Anúncios</span>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 py-1 text-zinc-500 dark:text-zinc-400" href="locais.html">
+<span class="material-symbols-outlined">map</span>
+<span class="text-xs font-medium">Locais</span>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 py-1 text-zinc-500 dark:text-zinc-400" href="perfil.html">
+<span class="material-symbols-outlined">person</span>
+<span class="text-xs font-medium">Perfil</span>
+</a>
+</div>
+</nav>
+</div>
+
+
+</body></html>

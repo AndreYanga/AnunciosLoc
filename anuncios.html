@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AnunciosLoc - Anúncios</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13a4ec",
+                        "primary-dark": "#0d7bb8",
+                        "secondary": "#f59e0b",
+                        "background-light": "#f8fafc",
+                        "background-dark": "#0f172a",
+                        "foreground-light": "#1e293b",
+                        "foreground-dark": "#f1f5f9",
+                        "subtle-light": "#e2e8f0",
+                        "subtle-dark": "#334155",
+                        "muted-light": "#64748b",
+                        "muted-dark": "#94a3b8",
+                        "success": "#10b981",
+                        "warning": "#f59e0b",
+                        "error": "#ef4444",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.75rem",
+                        "lg": "1rem",
+                        "xl": "1.25rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'soft': '0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04)',
+                        'soft-dark': '0 2px 15px -3px rgba(0, 0, 0, 0.3), 0 10px 20px -2px rgba(0, 0, 0, 0.2)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+      .gradient-bg {
+          background: linear-gradient(135deg, #13a4ec 0%, #0d7bb8 100%);
+      }
+      .card-hover {
+          transition: all 0.3s ease;
+      }
+      .card-hover:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+      .material-symbols-outlined {
+          font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-foreground-light dark:text-foreground-dark">
+<div class="flex flex-col min-h-screen">
+<header class="sticky top-0 z-10 bg-white/95 dark:bg-background-dark/95 backdrop-blur-md border-b border-subtle-light/20 dark:border-subtle-dark/20">
+<div class="flex items-center justify-between p-4">
+<div class="flex items-center gap-3">
+<button class="p-2 rounded-full hover:bg-subtle-light dark:hover:bg-subtle-dark transition-colors" onclick="history.back()">
+<span class="material-symbols-outlined text-foreground-light dark:text-foreground-dark">arrow_back</span>
+</button>
+<h1 class="text-xl font-bold text-foreground-light dark:text-foreground-dark">Anúncios</h1>
+</div>
+<button class="p-2 rounded-full hover:bg-primary/10 dark:hover:bg-primary/20 transition-colors" onclick="window.location.href='criar_anuncio.html'">
+<span class="material-symbols-outlined text-primary">add</span>
+</button>
+</div>
+</header>
+<main class="flex-1 px-4 pt-6 pb-24">
+<!-- Filter Tabs -->
+<div class="flex gap-3 mb-6 overflow-x-auto pb-2">
+<button class="flex items-center gap-2 rounded-full bg-primary text-white px-4 py-2 text-sm font-medium whitespace-nowrap">
+<span class="material-symbols-outlined text-sm">all_inclusive</span>
+<span>Todos</span>
+</button>
+<button class="flex items-center gap-2 rounded-full bg-subtle-light dark:bg-subtle-dark px-4 py-2 text-sm font-medium text-foreground-light dark:text-foreground-dark whitespace-nowrap">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<span>Próximos</span>
+</button>
+<button class="flex items-center gap-2 rounded-full bg-subtle-light dark:bg-subtle-dark px-4 py-2 text-sm font-medium text-foreground-light dark:text-foreground-dark whitespace-nowrap">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span>Recentes</span>
+</button>
+<button class="flex items-center gap-2 rounded-full bg-subtle-light dark:bg-subtle-dark px-4 py-2 text-sm font-medium text-foreground-light dark:text-foreground-dark whitespace-nowrap">
+<span class="material-symbols-outlined text-sm">bookmark</span>
+<span>Guardados</span>
+</button>
+</div>
+
+<div class="space-y-4">
+<!-- Announcement 1 -->
+<div class="bg-white dark:bg-subtle-dark rounded-xl p-4 shadow-soft dark:shadow-soft-dark card-hover">
+<div class="flex items-start gap-3 mb-3">
+<img alt="Avatar do utilizador" class="h-12 w-12 rounded-full object-cover" src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face"/>
+<div class="flex-grow">
+<div class="flex items-center gap-2 mb-1">
+<p class="font-semibold text-foreground-light dark:text-foreground-dark">Alice Silva</p>
+<span class="px-2 py-1 bg-success/10 text-success text-xs rounded-full">Verificado</span>
+</div>
+<p class="text-xs text-muted-light dark:text-muted-dark">há 2 horas</p>
+</div>
+<div class="flex items-center gap-1 text-muted-light dark:text-muted-dark">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<span class="text-xs">Largo da Independência</span>
+</div>
+</div>
+<p class="text-sm text-foreground-light dark:text-foreground-dark mb-3">
+                Olá pessoal! Estou a organizar um evento de limpeza comunitária no Largo da Independência este sábado às 10h. Vamos focar na área perto do lago. Os materiais serão fornecidos, mas podem trazer as suas próprias luvas se tiverem. Vamos tornar o nosso parque mais bonito juntos! 🌱
+            </p>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4 text-muted-light dark:text-muted-dark">
+<button class="flex items-center gap-1 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">favorite_border</span>
+<span class="text-xs font-medium">23</span>
+</button>
+<button class="flex items-center gap-1 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">chat_bubble_outline</span>
+<span class="text-xs font-medium">5</span>
+</button>
+<button class="flex items-center gap-1 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">bookmark_border</span>
+<span class="text-xs font-medium">1</span>
+</button>
+</div>
+<button class="text-primary text-xs font-medium hover:underline" onclick="window.location.href='visualizar_anuncio.html'">Ver mais</button>
+</div>
+</div>
+
+<!-- Announcement 2 -->
+<div class="bg-white dark:bg-subtle-dark rounded-xl p-4 shadow-soft dark:shadow-soft-dark card-hover">
+<div class="flex items-start gap-3 mb-3">
+<img alt="Avatar do utilizador" class="h-12 w-12 rounded-full object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"/>
+<div class="flex-grow">
+<div class="flex items-center gap-2 mb-1">
+<p class="font-semibold text-foreground-light dark:text-foreground-dark">João Santos</p>
+<span class="px-2 py-1 bg-secondary/10 text-secondary text-xs rounded-full">Vendedor</span>
+</div>
+<p class="text-xs text-muted-light dark:text-muted-dark">há 4 horas</p>
+</div>
+<div class="flex items-center gap-1 text-muted-light dark:text-muted-dark">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<span class="text-xs">Belas Shopping</span>
+</div>
+</div>
+<p class="text-sm text-foreground-light dark:text-foreground-dark mb-3">
+                Vendo iPhone 13 Pro Max em excelente estado. Preço negociável. Interessados contactem por WhatsApp: +244 923 456 789. Também aceito troca por Samsung Galaxy S21. 📱
+            </p>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4 text-muted-light dark:text-muted-dark">
+<button class="flex items-center gap-1 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">favorite_border</span>
+<span class="text-xs font-medium">8</span>
+</button>
+<button class="flex items-center gap-1 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">chat_bubble_outline</span>
+<span class="text-xs font-medium">2</span>
+</button>
+<button class="flex items-center gap-1 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">bookmark_border</span>
+<span class="text-xs font-medium">0</span>
+</button>
+</div>
+<button class="text-primary text-xs font-medium hover:underline" onclick="window.location.href='visualizar_anuncio.html'">Ver mais</button>
+</div>
+</div>
+
+<!-- Announcement 3 -->
+<div class="bg-white dark:bg-subtle-dark rounded-xl p-4 shadow-soft dark:shadow-soft-dark card-hover">
+<div class="flex items-start gap-3 mb-3">
+<img alt="Avatar do utilizador" class="h-12 w-12 rounded-full object-cover" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"/>
+<div class="flex-grow">
+<div class="flex items-center gap-2 mb-1">
+<p class="font-semibold text-foreground-light dark:text-foreground-dark">Maria Costa</p>
+<span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full">Fitness</span>
+</div>
+<p class="text-xs text-muted-light dark:text-muted-dark">há 6 horas</p>
+</div>
+<div class="flex items-center gap-1 text-muted-light dark:text-muted-dark">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<span class="text-xs">Ginásio do Camama I</span>
+</div>
+</div>
+<p class="text-sm text-foreground-light dark:text-foreground-dark mb-3">
+                Procuro parceiro de treino para musculação. Treino de segunda a sexta às 18h. Experiência não necessária, só vontade de treinar! Vamos juntos alcançar os nossos objetivos! 💪
+            </p>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4 text-muted-light dark:text-muted-dark">
+<button class="flex items-center gap-1 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">favorite_border</span>
+<span class="text-xs font-medium">15</span>
+</button>
+<button class="flex items-center gap-1 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">chat_bubble_outline</span>
+<span class="text-xs font-medium">3</span>
+</button>
+<button class="flex items-center gap-1 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">bookmark_border</span>
+<span class="text-xs font-medium">2</span>
+</button>
+</div>
+<button class="text-primary text-xs font-medium hover:underline" onclick="window.location.href='visualizar_anuncio.html'">Ver mais</button>
+</div>
+</div>
+
+<!-- Announcement 4 -->
+<div class="bg-white dark:bg-subtle-dark rounded-xl p-4 shadow-soft dark:shadow-soft-dark card-hover">
+<div class="flex items-start gap-3 mb-3">
+<img alt="Avatar do utilizador" class="h-12 w-12 rounded-full object-cover" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face"/>
+<div class="flex-grow">
+<div class="flex items-center gap-2 mb-1">
+<p class="font-semibold text-foreground-light dark:text-foreground-dark">Carlos Mendes</p>
+<span class="px-2 py-1 bg-purple-500/10 text-purple-500 text-xs rounded-full">Estudante</span>
+</div>
+<p class="text-xs text-muted-light dark:text-muted-dark">há 8 horas</p>
+</div>
+<div class="flex items-center gap-1 text-muted-light dark:text-muted-dark">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<span class="text-xs">Universidade Agostinho Neto</span>
+</div>
+</div>
+<p class="text-sm text-foreground-light dark:text-foreground-dark mb-3">
+                Grupo de estudo para Matemática Aplicada! Reuniões às terças e quintas às 15h na biblioteca. Todos os níveis são bem-vindos. Vamos aprender juntos! 📚
+            </p>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4 text-muted-light dark:text-muted-dark">
+<button class="flex items-center gap-1 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">favorite_border</span>
+<span class="text-xs font-medium">12</span>
+</button>
+<button class="flex items-center gap-1 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">chat_bubble_outline</span>
+<span class="text-xs font-medium">7</span>
+</button>
+<button class="flex items-center gap-1 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">bookmark_border</span>
+<span class="text-xs font-medium">4</span>
+</button>
+</div>
+<button class="text-primary text-xs font-medium hover:underline" onclick="window.location.href='visualizar_anuncio.html'">Ver mais</button>
+</div>
+</div>
+
+<!-- Announcement 5 -->
+<div class="bg-white dark:bg-subtle-dark rounded-xl p-4 shadow-soft dark:shadow-soft-dark card-hover">
+<div class="flex items-start gap-3 mb-3">
+<img alt="Avatar do utilizador" class="h-12 w-12 rounded-full object-cover" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face"/>
+<div class="flex-grow">
+<div class="flex items-center gap-2 mb-1">
+<p class="font-semibold text-foreground-light dark:text-foreground-dark">Ana Rodrigues</p>
+<span class="px-2 py-1 bg-red-500/10 text-red-500 text-xs rounded-full">Comércio</span>
+</div>
+<p class="text-xs text-muted-light dark:text-muted-dark">há 12 horas</p>
+</div>
+<div class="flex items-center gap-1 text-muted-light dark:text-muted-dark">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<span class="text-xs">Mercado do Benfica</span>
+</div>
+</div>
+<p class="text-sm text-foreground-light dark:text-foreground-dark mb-3">
+                Frutas e legumes frescos todos os dias! Preços especiais para estudantes. Venham conhecer a nossa banca na entrada principal. 🍎🥬
+            </p>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4 text-muted-light dark:text-muted-dark">
+<button class="flex items-center gap-1 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">favorite_border</span>
+<span class="text-xs font-medium">6</span>
+</button>
+<button class="flex items-center gap-1 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">chat_bubble_outline</span>
+<span class="text-xs font-medium">1</span>
+</button>
+<button class="flex items-center gap-1 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">bookmark_border</span>
+<span class="text-xs font-medium">0</span>
+</button>
+</div>
+<button class="text-primary text-xs font-medium hover:underline" onclick="window.location.href='visualizar_anuncio.html'">Ver mais</button>
+</div>
+</div>
+</div>
+</main>
+<nav class="sticky bottom-0 bg-white/95 dark:bg-background-dark/95 backdrop-blur-md border-t border-subtle-light/20 dark:border-subtle-dark/20">
+<div class="flex justify-around items-center h-20 px-2">
+<a class="flex flex-col items-center justify-center gap-1 w-1/4 text-muted-light dark:text-muted-dark hover:text-primary dark:hover:text-primary transition-colors" href="index.html">
+<span class="material-symbols-outlined text-xl">home</span>
+<span class="text-xs font-medium">Início</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 w-1/4 rounded-full py-2 bg-primary text-white shadow-lg" href="anuncios.html">
+<span class="material-symbols-outlined text-xl">campaign</span>
+<span class="text-xs font-medium">Anúncios</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 w-1/4 text-muted-light dark:text-muted-dark hover:text-primary dark:hover:text-primary transition-colors" href="locais.html">
+<span class="material-symbols-outlined text-xl">location_on</span>
+<span class="text-xs font-medium">Locais</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 w-1/4 text-muted-light dark:text-muted-dark hover:text-primary dark:hover:text-primary transition-colors" href="perfil.html">
+<span class="material-symbols-outlined text-xl">person</span>
+<span class="text-xs font-medium">Perfil</span>
+</a>
+</div>
+</nav>
+</div>
+
+</body></html>

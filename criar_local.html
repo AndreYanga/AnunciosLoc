@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AnunciosLoc - Criar Local</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13a4ec",
+                        "primary-dark": "#0d7bb8",
+                        "secondary": "#f59e0b",
+                        "background-light": "#f8fafc",
+                        "background-dark": "#0f172a",
+                        "foreground-light": "#1e293b",
+                        "foreground-dark": "#f1f5f9",
+                        "subtle-light": "#e2e8f0",
+                        "subtle-dark": "#334155",
+                        "muted-light": "#64748b",
+                        "muted-dark": "#94a3b8",
+                        "success": "#10b981",
+                        "warning": "#f59e0b",
+                        "error": "#ef4444",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.75rem",
+                        "lg": "1rem",
+                        "xl": "1.25rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'soft': '0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04)',
+                        'soft-dark': '0 2px 15px -3px rgba(0, 0, 0, 0.3), 0 10px 20px -2px rgba(0, 0, 0, 0.2)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+      .gradient-bg {
+          background: linear-gradient(135deg, #13a4ec 0%, #0d7bb8 100%);
+      }
+      .material-symbols-outlined {
+          font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-foreground-light dark:text-foreground-dark">
+<div class="flex flex-col min-h-screen">
+<header class="sticky top-0 z-10 bg-white/95 dark:bg-background-dark/95 backdrop-blur-md border-b border-subtle-light/20 dark:border-subtle-dark/20">
+<div class="flex items-center justify-between p-4">
+<div class="flex items-center gap-3">
+<button class="p-2 rounded-full hover:bg-subtle-light dark:hover:bg-subtle-dark transition-colors" onclick="history.back()">
+<span class="material-symbols-outlined text-foreground-light dark:text-foreground-dark">arrow_back</span>
+</button>
+<h1 class="text-xl font-bold text-foreground-light dark:text-foreground-dark">Criar Local</h1>
+</div>
+</div>
+</header>
+<main class="flex-1 px-4 pt-6 pb-24">
+<form class="space-y-6">
+<!-- Basic Info -->
+<div class="bg-white dark:bg-subtle-dark rounded-xl p-4 shadow-soft dark:shadow-soft-dark">
+<h2 class="text-lg font-semibold text-foreground-light dark:text-foreground-dark mb-4">Informações Básicas</h2>
+<div class="space-y-4">
+<div>
+<label class="block text-sm font-medium text-muted-light dark:text-muted-dark mb-2" for="location-name">Nome do Local</label>
+<input class="w-full bg-subtle-light dark:bg-subtle-dark border-0 rounded-lg py-3 px-4 text-foreground-light dark:text-foreground-dark placeholder-muted-light dark:placeholder-muted-dark focus:ring-2 focus:ring-primary" id="location-name" placeholder="Ex: Praça da República" type="text" required/>
+</div>
+<div>
+<label class="block text-sm font-medium text-muted-light dark:text-muted-dark mb-2" for="location-description">Descrição</label>
+<textarea class="w-full bg-subtle-light dark:bg-subtle-dark border-0 rounded-lg py-3 px-4 text-foreground-light dark:text-foreground-dark placeholder-muted-light dark:placeholder-muted-dark focus:ring-2 focus:ring-primary" id="location-description" placeholder="Descreva o local..." rows="3"></textarea>
+</div>
+<div>
+<label class="block text-sm font-medium text-muted-light dark:text-muted-dark mb-2" for="location-category">Categoria</label>
+<select class="w-full bg-subtle-light dark:bg-subtle-dark border-0 rounded-lg py-3 px-4 text-foreground-light dark:text-foreground-dark focus:ring-2 focus:ring-primary" id="location-category" required>
+<option value="">Selecionar categoria</option>
+<option value="comercio">Comércio</option>
+<option value="educacao">Educação</option>
+<option value="desporto">Desporto</option>
+<option value="saude">Saúde</option>
+<option value="cultura">Cultura</option>
+<option value="transporte">Transporte</option>
+<option value="outros">Outros</option>
+</select>
+</div>
+</div>
+</div>
+
+<!-- Location Type -->
+<div class="bg-white dark:bg-subtle-dark rounded-xl p-4 shadow-soft dark:shadow-soft-dark">
+<h2 class="text-lg font-semibold text-foreground-light dark:text-foreground-dark mb-4">Tipo de Localização</h2>
+<div class="space-y-4">
+<div class="grid grid-cols-2 gap-4">
+<label class="flex items-center p-4 rounded-lg border-2 border-subtle-light dark:border-subtle-dark has-[:checked]:border-primary has-[:checked]:bg-primary/10 transition-all cursor-pointer">
+<div class="flex-grow">
+<p class="font-medium text-foreground-light dark:text-foreground-dark">GPS</p>
+<p class="text-sm text-muted-light dark:text-muted-dark">Coordenadas geográficas</p>
+</div>
+<input class="h-5 w-5 border-subtle-light dark:border-subtle-dark text-primary bg-subtle-light dark:bg-subtle-dark checked:bg-primary focus:ring-primary focus:ring-offset-0" name="location-type" type="radio" value="gps" checked/>
+</label>
+<label class="flex items-center p-4 rounded-lg border-2 border-subtle-light dark:border-subtle-dark has-[:checked]:border-primary has-[:checked]:bg-primary/10 transition-all cursor-pointer">
+<div class="flex-grow">
+<p class="font-medium text-foreground-light dark:text-foreground-dark">WiFi/BLE</p>
+<p class="text-sm text-muted-light dark:text-muted-dark">Identificadores de rede</p>
+</div>
+<input class="h-5 w-5 border-subtle-light dark:border-subtle-dark text-primary bg-subtle-light dark:bg-subtle-dark checked:bg-primary focus:ring-primary focus:ring-offset-0" name="location-type" type="radio" value="wifi"/>
+</label>
+</div>
+</div>
+</div>
+
+<!-- GPS Coordinates -->
+<div class="bg-white dark:bg-subtle-dark rounded-xl p-4 shadow-soft dark:shadow-soft-dark" id="gps-section">
+<h2 class="text-lg font-semibold text-foreground-light dark:text-foreground-dark mb-4">Coordenadas GPS</h2>
+<div class="space-y-4">
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-sm font-medium text-muted-light dark:text-muted-dark mb-2" for="latitude">Latitude</label>
+<input class="w-full bg-subtle-light dark:bg-subtle-dark border-0 rounded-lg py-3 px-4 text-foreground-light dark:text-foreground-dark placeholder-muted-light dark:placeholder-muted-dark focus:ring-2 focus:ring-primary" id="latitude" placeholder="-8.8139" type="number" step="any"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-muted-light dark:text-muted-dark mb-2" for="longitude">Longitude</label>
+<input class="w-full bg-subtle-light dark:bg-subtle-dark border-0 rounded-lg py-3 px-4 text-foreground-light dark:text-foreground-dark placeholder-muted-light dark:placeholder-muted-dark focus:ring-2 focus:ring-primary" id="longitude" placeholder="13.2319" type="number" step="any"/>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-muted-light dark:text-muted-dark mb-2" for="radius">Raio (metros)</label>
+<input class="w-full bg-subtle-light dark:bg-subtle-dark border-0 rounded-lg py-3 px-4 text-foreground-light dark:text-foreground-dark placeholder-muted-light dark:placeholder-muted-dark focus:ring-2 focus:ring-primary" id="radius" placeholder="50" type="number" min="1" max="1000"/>
+</div>
+<div class="flex items-center gap-2 p-3 bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-primary">my_location</span>
+<button type="button" class="text-primary font-medium">Usar localização atual</button>
+</div>
+</div>
+</div>
+
+<!-- WiFi/BLE Section -->
+<div class="bg-white dark:bg-subtle-dark rounded-xl p-4 shadow-soft dark:shadow-soft-dark hidden" id="wifi-section">
+<h2 class="text-lg font-semibold text-foreground-light dark:text-foreground-dark mb-4">Identificadores de Rede</h2>
+<div class="space-y-4">
+<div>
+<label class="block text-sm font-medium text-muted-light dark:text-muted-dark mb-2" for="wifi-ids">IDs WiFi/BLE</label>
+<input class="w-full bg-subtle-light dark:bg-subtle-dark border-0 rounded-lg py-3 px-4 text-foreground-light dark:text-foreground-dark placeholder-muted-light dark:placeholder-muted-dark focus:ring-2 focus:ring-primary" id="wifi-ids" placeholder="Ex: cafe-wifi, beacon-001" type="text"/>
+<p class="text-xs text-muted-light dark:text-muted-dark mt-1">Separe múltiplos IDs com vírgulas</p>
+</div>
+<div class="flex items-center gap-2 p-3 bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-primary">wifi</span>
+<button type="button" class="text-primary font-medium">Detectar redes próximas</button>
+</div>
+</div>
+</div>
+
+<!-- Visibility Settings -->
+<div class="bg-white dark:bg-subtle-dark rounded-xl p-4 shadow-soft dark:shadow-soft-dark">
+<h2 class="text-lg font-semibold text-foreground-light dark:text-foreground-dark mb-4">Configurações de Visibilidade</h2>
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<label class="text-sm font-medium text-foreground-light dark:text-foreground-dark">Local público</label>
+<label class="relative flex h-8 w-14 cursor-pointer items-center rounded-full bg-subtle-light dark:bg-subtle-dark p-1 has-[:checked]:bg-primary transition-colors">
+<div class="h-6 w-6 rounded-full bg-white dark:bg-subtle-dark shadow-sm transform transition-transform duration-200 ease-in-out has-[:checked]:translate-x-6"></div>
+<input checked="" class="invisible absolute" type="checkbox"/>
+</label>
+</div>
+<div class="flex items-center justify-between">
+<label class="text-sm font-medium text-foreground-light dark:text-foreground-dark">Permitir anúncios</label>
+<label class="relative flex h-8 w-14 cursor-pointer items-center rounded-full bg-subtle-light dark:bg-subtle-dark p-1 has-[:checked]:bg-primary transition-colors">
+<div class="h-6 w-6 rounded-full bg-white dark:bg-subtle-dark shadow-sm transform transition-transform duration-200 ease-in-out has-[:checked]:translate-x-6"></div>
+<input checked="" class="invisible absolute" type="checkbox"/>
+</label>
+</div>
+</div>
+</div>
+</form>
+</main>
+<footer class="sticky bottom-0 bg-white/95 dark:bg-background-dark/95 backdrop-blur-md border-t border-subtle-light/20 dark:border-subtle-dark/20 p-4">
+<div class="flex gap-3">
+<button class="flex-1 bg-subtle-light dark:bg-subtle-dark text-foreground-light dark:text-foreground-dark font-bold py-3 px-4 rounded-lg transition-colors hover:bg-subtle-light/80 dark:hover:bg-subtle-dark/80" type="button" onclick="history.back()">
+                Cancelar
+            </button>
+<button class="flex-1 gradient-bg text-white font-bold py-3 px-4 rounded-lg shadow-lg hover:opacity-90 transition-all" type="submit" form="location-form">
+                Criar Local
+            </button>
+</div>
+</footer>
+</div>
+
+<script>
+// Toggle between GPS and WiFi sections
+document.querySelectorAll('input[name="location-type"]').forEach(radio => {
+    radio.addEventListener('change', function() {
+        const gpsSection = document.getElementById('gps-section');
+        const wifiSection = document.getElementById('wifi-section');
+        
+        if (this.value === 'gps') {
+            gpsSection.classList.remove('hidden');
+            wifiSection.classList.add('hidden');
+        } else {
+            gpsSection.classList.add('hidden');
+            wifiSection.classList.remove('hidden');
+        }
+    });
+});
+
+// Form submission
+document.querySelector('form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    // Here you would handle the form submission
+    alert('Local criado com sucesso!');
+    window.location.href = 'locais.html';
+});
+</script>
+
+</body></html>

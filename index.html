@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AnunciosLoc - Sistema de Anúncios Baseado em Localização</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13a4ec",
+                        "primary-dark": "#0d7bb8",
+                        "secondary": "#f59e0b",
+                        "background-light": "#f8fafc",
+                        "background-dark": "#0f172a",
+                        "foreground-light": "#1e293b",
+                        "foreground-dark": "#f1f5f9",
+                        "subtle-light": "#e2e8f0",
+                        "subtle-dark": "#334155",
+                        "muted-light": "#64748b",
+                        "muted-dark": "#94a3b8",
+                        "success": "#10b981",
+                        "warning": "#f59e0b",
+                        "error": "#ef4444",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.75rem",
+                        "lg": "1rem",
+                        "xl": "1.25rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'soft': '0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04)',
+                        'soft-dark': '0 2px 15px -3px rgba(0, 0, 0, 0.3), 0 10px 20px -2px rgba(0, 0, 0, 0.2)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+      .active-nav-item {
+          background-color: #13a4ec;
+          color: white;
+      }
+      .gradient-bg {
+          background: linear-gradient(135deg, #13a4ec 0%, #0d7bb8 100%);
+      }
+      .card-hover {
+          transition: all 0.3s ease;
+      }
+      .card-hover:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+      .pulse-animation {
+          animation: pulse 2s infinite;
+      }
+      @keyframes pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.7; }
+      }
+      .material-symbols-outlined {
+          font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="flex flex-col h-screen justify-between">
+<div class="flex-grow overflow-y-auto">
+<header class="sticky top-0 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md z-10 border-b border-subtle-light/20 dark:border-subtle-dark/20">
+<div class="flex items-center justify-between p-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 gradient-bg rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-sm">location_on</span>
+</div>
+<h1 class="text-xl font-bold text-foreground-light dark:text-foreground-dark">AnunciosLoc</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-full hover:bg-subtle-light dark:hover:bg-subtle-dark transition-colors">
+<span class="material-symbols-outlined text-foreground-light dark:text-foreground-dark">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-subtle-light dark:hover:bg-subtle-dark transition-colors">
+<span class="material-symbols-outlined text-foreground-light dark:text-foreground-dark">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<main class="px-4 pb-4">
+<!-- Hero Section -->
+<div class="gradient-bg rounded-2xl p-6 mb-6 text-white">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-2xl font-bold">Bem-vindo ao AnunciosLoc</h2>
+<div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-white">campaign</span>
+</div>
+</div>
+<p class="text-white/90 mb-4">Descubra anúncios baseados na sua localização. Conecte-se com a sua comunidade local.</p>
+<div class="flex items-center gap-4 text-sm">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<span>Luanda, Angola</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">wifi</span>
+<span>WiFi Direct Ativo</span>
+</div>
+</div>
+</div>
+
+<!-- Search and Filter -->
+<div class="relative mb-6">
+<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
+<span class="material-symbols-outlined text-muted-light dark:text-muted-dark">search</span>
+</div>
+<input class="w-full rounded-xl border-0 bg-white dark:bg-subtle-dark py-4 pl-12 pr-4 text-foreground-light dark:text-foreground-dark placeholder-muted-light dark:placeholder-muted-dark focus:ring-2 focus:ring-primary shadow-soft dark:shadow-soft-dark" placeholder="Pesquisar locais próximos..." type="text"/>
+</div>
+
+<div class="flex gap-3 mb-6 overflow-x-auto pb-2">
+<button class="flex items-center gap-2 rounded-full bg-primary text-white px-4 py-2 text-sm font-medium whitespace-nowrap">
+<span class="material-symbols-outlined text-sm">tune</span>
+<span>Todos</span>
+</button>
+<button class="flex items-center gap-2 rounded-full bg-subtle-light dark:bg-subtle-dark px-4 py-2 text-sm font-medium text-foreground-light dark:text-foreground-dark whitespace-nowrap">
+<span class="material-symbols-outlined text-sm">shopping_cart</span>
+<span>Comércio</span>
+</button>
+<button class="flex items-center gap-2 rounded-full bg-subtle-light dark:bg-subtle-dark px-4 py-2 text-sm font-medium text-foreground-light dark:text-foreground-dark whitespace-nowrap">
+<span class="material-symbols-outlined text-sm">school</span>
+<span>Educação</span>
+</button>
+<button class="flex items-center gap-2 rounded-full bg-subtle-light dark:bg-subtle-dark px-4 py-2 text-sm font-medium text-foreground-light dark:text-foreground-dark whitespace-nowrap">
+<span class="material-symbols-outlined text-sm">fitness_center</span>
+<span>Desporto</span>
+</button>
+</div>
+
+<!-- Stats Cards -->
+<div class="grid grid-cols-3 gap-3 mb-6">
+<div class="bg-white dark:bg-subtle-dark rounded-xl p-4 text-center shadow-soft dark:shadow-soft-dark">
+<div class="text-2xl font-bold text-primary">12</div>
+<div class="text-xs text-muted-light dark:text-muted-dark">Locais</div>
+</div>
+<div class="bg-white dark:bg-subtle-dark rounded-xl p-4 text-center shadow-soft dark:shadow-soft-dark">
+<div class="text-2xl font-bold text-secondary">47</div>
+<div class="text-xs text-muted-light dark:text-muted-dark">Anúncios</div>
+</div>
+<div class="bg-white dark:bg-subtle-dark rounded-xl p-4 text-center shadow-soft dark:shadow-soft-dark">
+<div class="text-2xl font-bold text-success">156</div>
+<div class="text-xs text-muted-light dark:text-muted-dark">Utilizadores</div>
+</div>
+</div>
+
+<h2 class="text-xl font-bold text-foreground-light dark:text-foreground-dark mb-4">Locais Próximos</h2>
+<div class="space-y-4">
+<div class="bg-white dark:bg-subtle-dark rounded-xl p-4 shadow-soft dark:shadow-soft-dark card-hover">
+<div class="flex items-center gap-4">
+<div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-primary-dark text-white">
+<span class="material-symbols-outlined text-xl">location_on</span>
+</div>
+<div class="flex-grow">
+<div class="flex items-center gap-2 mb-1">
+<h3 class="font-bold text-foreground-light dark:text-foreground-dark">Largo da Independência</h3>
+<span class="px-2 py-1 bg-success/10 text-success text-xs rounded-full">Ativo</span>
+</div>
+<p class="text-sm text-muted-light dark:text-muted-dark mb-1">Centro Histórico • 0.8 km</p>
+<p class="text-sm text-muted-light dark:text-muted-dark">3 anúncios ativos • 12 utilizadores próximos</p>
+</div>
+<div class="flex flex-col items-end gap-1">
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-sm">wifi</span>
+<span class="text-xs">GPS</span>
+</div>
+<button class="p-2 rounded-full hover:bg-subtle-light dark:hover:bg-subtle-dark transition-colors">
+<span class="material-symbols-outlined text-muted-light dark:text-muted-dark">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+
+<div class="bg-white dark:bg-subtle-dark rounded-xl p-4 shadow-soft dark:shadow-soft-dark card-hover">
+<div class="flex items-center gap-4">
+<div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-secondary to-orange-500 text-white">
+<span class="material-symbols-outlined text-xl">shopping_cart</span>
+</div>
+<div class="flex-grow">
+<div class="flex items-center gap-2 mb-1">
+<h3 class="font-bold text-foreground-light dark:text-foreground-dark">Belas Shopping</h3>
+<span class="px-2 py-1 bg-success/10 text-success text-xs rounded-full">Ativo</span>
+</div>
+<p class="text-sm text-muted-light dark:text-muted-dark mb-1">Centro Comercial • 1.2 km</p>
+<p class="text-sm text-muted-light dark:text-muted-dark">8 anúncios ativos • 24 utilizadores próximos</p>
+</div>
+<div class="flex flex-col items-end gap-1">
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-sm">wifi</span>
+<span class="text-xs">WiFi</span>
+</div>
+<button class="p-2 rounded-full hover:bg-subtle-light dark:hover:bg-subtle-dark transition-colors">
+<span class="material-symbols-outlined text-muted-light dark:text-muted-dark">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+
+<div class="bg-white dark:bg-subtle-dark rounded-xl p-4 shadow-soft dark:shadow-soft-dark card-hover">
+<div class="flex items-center gap-4">
+<div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-success to-green-600 text-white">
+<span class="material-symbols-outlined text-xl">fitness_center</span>
+</div>
+<div class="flex-grow">
+<div class="flex items-center gap-2 mb-1">
+<h3 class="font-bold text-foreground-light dark:text-foreground-dark">Ginásio do Camama I</h3>
+<span class="px-2 py-1 bg-success/10 text-success text-xs rounded-full">Ativo</span>
+</div>
+<p class="text-sm text-muted-light dark:text-muted-dark mb-1">Desporto • 2.1 km</p>
+<p class="text-sm text-muted-light dark:text-muted-dark">5 anúncios ativos • 8 utilizadores próximos</p>
+</div>
+<div class="flex flex-col items-end gap-1">
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-sm">bluetooth</span>
+<span class="text-xs">BLE</span>
+</div>
+<button class="p-2 rounded-full hover:bg-subtle-light dark:hover:bg-subtle-dark transition-colors">
+<span class="material-symbols-outlined text-muted-light dark:text-muted-dark">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+
+<div class="bg-white dark:bg-subtle-dark rounded-xl p-4 shadow-soft dark:shadow-soft-dark card-hover">
+<div class="flex items-center gap-4">
+<div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 text-white">
+<span class="material-symbols-outlined text-xl">school</span>
+</div>
+<div class="flex-grow">
+<div class="flex items-center gap-2 mb-1">
+<h3 class="font-bold text-foreground-light dark:text-foreground-dark">Universidade Agostinho Neto</h3>
+<span class="px-2 py-1 bg-success/10 text-success text-xs rounded-full">Ativo</span>
+</div>
+<p class="text-sm text-muted-light dark:text-muted-dark mb-1">Educação • 3.5 km</p>
+<p class="text-sm text-muted-light dark:text-muted-dark">12 anúncios ativos • 45 utilizadores próximos</p>
+</div>
+<div class="flex flex-col items-end gap-1">
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-sm">wifi</span>
+<span class="text-xs">GPS</span>
+</div>
+<button class="p-2 rounded-full hover:bg-subtle-light dark:hover:bg-subtle-dark transition-colors">
+<span class="material-symbols-outlined text-muted-light dark:text-muted-dark">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+
+<div class="bg-white dark:bg-subtle-dark rounded-xl p-4 shadow-soft dark:shadow-soft-dark card-hover">
+<div class="flex items-center gap-4">
+<div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-red-500 to-red-600 text-white">
+<span class="material-symbols-outlined text-xl">restaurant</span>
+</div>
+<div class="flex-grow">
+<div class="flex items-center gap-2 mb-1">
+<h3 class="font-bold text-foreground-light dark:text-foreground-dark">Mercado do Benfica</h3>
+<span class="px-2 py-1 bg-warning/10 text-warning text-xs rounded-full">Moderado</span>
+</div>
+<p class="text-sm text-muted-light dark:text-muted-dark mb-1">Mercado • 4.2 km</p>
+<p class="text-sm text-muted-light dark:text-muted-dark">2 anúncios ativos • 6 utilizadores próximos</p>
+</div>
+<div class="flex flex-col items-end gap-1">
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-sm">wifi</span>
+<span class="text-xs">WiFi</span>
+</div>
+<button class="p-2 rounded-full hover:bg-subtle-light dark:hover:bg-subtle-dark transition-colors">
+<span class="material-symbols-outlined text-muted-light dark:text-muted-dark">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<nav class="sticky bottom-0 bg-white/95 dark:bg-background-dark/95 backdrop-blur-md border-t border-subtle-light/20 dark:border-subtle-dark/20">
+<div class="flex justify-around items-center h-20 px-2">
+<a class="flex flex-col items-center justify-center gap-1 w-1/4 rounded-full py-2 bg-primary text-white shadow-lg" href="index.html">
+<span class="material-symbols-outlined text-xl">home</span>
+<span class="text-xs font-medium">Início</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 w-1/4 text-muted-light dark:text-muted-dark hover:text-primary dark:hover:text-primary transition-colors" href="anuncios.html">
+<span class="material-symbols-outlined text-xl">campaign</span>
+<span class="text-xs font-medium">Anúncios</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 w-1/4 text-muted-light dark:text-muted-dark hover:text-primary dark:hover:text-primary transition-colors" href="locais.html">
+<span class="material-symbols-outlined text-xl">location_on</span>
+<span class="text-xs font-medium">Locais</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 w-1/4 text-muted-light dark:text-muted-dark hover:text-primary dark:hover:text-primary transition-colors" href="perfil.html">
+<span class="material-symbols-outlined text-xl">person</span>
+<span class="text-xs font-medium">Perfil</span>
+</a>
+</div>
+</nav>
+</div>
+
+</body></html>
